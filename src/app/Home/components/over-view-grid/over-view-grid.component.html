@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="m-5">
+
+        <div class="d-flex align-items-center">
+            <div>
+                <button type="button" class="btn btn-primary" (click)="OnAddEmployee()"> Add Employee</button>
+            </div>
+
+            <div class="ms-auto">
+                <app-filter-action (emitFilter)="OnEmitFilter($event)"></app-filter-action>
+            </div>
+        </div>
+
+        <div class="m-4">
+
+            <table class="table">
+                <thead>
+                    <th>Name</th>
+                    <th>Dob</th>
+                    <th>Mobile</th>
+                    <th>Martial Status</th>
+                    <th>Gender</th>
+                    <th>Photo</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </thead>
+
+                <tbody>
+                    @for(emp of EmployeeDataList;track emp){
+                    <tr>
+                        <td>{{emp.name}}</td>
+                        <td>{{emp.dob | date }}</td>
+                        <td>{{emp.mobile}}</td>
+                        <td>{{emp.martialStatus}}</td>
+                        <td>{{emp.gender}}</td>
+                        <td>
+                            <img [src]="emp.image" alt="" srcset="">
+                        </td>
+                        <td><button class="btn btn-primary btn-sm" (click)="OnEdit(emp)">Edit</button></td>
+                        <td><button class="btn btn-danger btn-sm" (click)="OnDelete(emp.id)">Delete</button></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

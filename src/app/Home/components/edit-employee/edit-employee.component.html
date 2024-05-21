@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="m-5">
+
+        <form [formGroup]="EditForm">
+            <div class="my-2">
+                <input type="text" class="form-control" name="" id="" placeholder="name" formControlName="Name"
+                    [class.is-invalid]="EditForm.get('Name').invalid && (EditForm.get('Name').touched ||EditForm.get('Name').dirty) ">
+            </div>
+
+            <div class="my-2">
+                <input type="date" class="form-control" name="" id="" placeholder="Dob" formControlName="Dob"
+                    [class.is-invalid]="EditForm.get('Dob').invalid && (EditForm.get('Dob').touched ||EditForm.get('Dob').dirty) ">
+            </div>
+
+            <div class="my-2">
+                <input type="text" class="form-control" name="" id="" placeholder="Mobile" formControlName="Mobile"
+                    maxlength="12" (keypress)="numberOnly($event)"
+                    [class.is-invalid]="EditForm.get('Mobile').invalid && (EditForm.get('Mobile').touched ||EditForm.get('Mobile').dirty) ">
+            </div>
+
+            
+            <div class="my-2">
+                <input type="number" class="form-control" name="" id="" placeholder="Martial Status"
+                    formControlName="MartialStatus">
+            </div>
+
+            <div class="my-2">
+                <select name="" id="" formControlName="Gender" class="form-control" (change)="OnUpdateGender($event)"
+                    [class.is-invalid]="EditForm.get('Gender').invalid && (EditForm.get('Gender').touched ||EditForm.get('Gender').dirty) ">
+
+                    @for(option of options;track option){
+                    <option [value]="option.value">
+
+                        {{ option.text }}
+                    </option>
+                    }
+
+                </select>
+            </div>
+
+            <div class="my-2">
+                <input type="file" class="form-control" name="" id="" placeholder="name" formControlName="Image"
+                    [class.is-invalid]="EditForm.get('Image').invalid && (EditForm.get('Image').touched ||EditForm.get('Image').dirty) ">
+            </div>
+
+        </form>
+        <div class="d-flex align-items-center justify-content-center">
+            <div>
+                <button [disabled]="EditForm.invalid" type="button" class="btn btn-primary"
+                    (click)="OnUpdate()">Update</button>
+            </div>
+            <div class="ms-auto">
+                <button type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="m-5">
+
+        <form [formGroup]="AddForm">
+            <div class="my-2">
+                <input type="text" class="form-control" name="" id="" placeholder="name" formControlName="Name"
+                    [class.is-invalid]="AddForm.get('Name').invalid && (AddForm.get('Name').touched ||AddForm.get('Name').dirty) ">
+            </div>
+
+            <div class="my-2">
+                <input type="date" class="form-control" name="" id="" placeholder="Dob" formControlName="Dob"
+                    [class.is-invalid]="AddForm.get('Dob').invalid && (AddForm.get('Dob').touched ||AddForm.get('Dob').dirty) ">
+            </div>
+
+            <div class="my-2">
+                <input type="text" class="form-control" name="" id="" placeholder="Mobile" formControlName="Mobile"
+                    (keypress)="numberOnly($event)" maxlength="12"
+                    [class.is-invalid]="AddForm.get('Mobile').invalid && (AddForm.get('Mobile').touched ||AddForm.get('Mobile').dirty) ">
+            </div>
+
+            <div class="my-2">
+                <input type="number" class="form-control" name="" id="" placeholder="Martial Status"
+                    formControlName="MartialStatus">
+            </div>
+
+            <div class="my-2">
+                <select name="" id="" formControlName="Gender" class="form-control" (change)="OnUpdateGender($event)"
+                    [class.is-invalid]="AddForm.get('Gender').invalid && (AddForm.get('Gender').touched ||AddForm.get('Gender').dirty) ">
+
+                    @for(option of options;track option){
+                    <option [value]="option.value">
+
+                        {{ option.text }}
+                    </option>
+                    }
+
+                </select>
+            </div>
+
+            <div class="my-2">
+                <input type="file" class="form-control" name="" id="" placeholder="name" formControlName="Image"
+                    [class.is-invalid]="AddForm.get('Image').invalid && (AddForm.get('Image').touched ||AddForm.get('Image').dirty) ">
+            </div>
+
+        </form>
+        <div class="d-flex align-items-center justify-content-center">
+            <div>
+                <button [disabled]="AddForm.invalid" type="button" class="btn btn-primary"
+                    (click)="OnAdd()">Save</button>
+            </div>
+            <div class="ms-auto">
+                <button type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>
